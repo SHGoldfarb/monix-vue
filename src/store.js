@@ -11,11 +11,17 @@ export default new Vuex.Store({
       MXN: 20.12,
       EUR: 0.88,
     },
-    leftRate: 'USD',
-    rightRate: 'CLP',
+    leftRate: 'CLP',
+    rightRate: 'USD',
+    currentMultiplier: 10,
   },
   mutations: {
-
+    changeLeftRate(state, newRate) {
+      state.leftRate = newRate;
+    },
+    changeRightRate(state, newRate) {
+      state.rightRate = newRate;
+    },
   },
   actions: {
 
