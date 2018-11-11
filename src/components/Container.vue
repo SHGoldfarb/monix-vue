@@ -1,14 +1,22 @@
 <template>
   <div class="container">
-    Hola! {{clp}}
+    <Headers></Headers>
+    <Table></Table>
   </div>
 </template>
 
 <script>
+import Headers from "./Headers.vue";
+import Table from "./Table.vue";
+
 export default {
   name: "HelloWorld",
   data() {
-    return { clp: this.$store.state.rates.CLP };
+    return {};
+  },
+  components: {
+    Headers,
+    Table
   }
 };
 </script>

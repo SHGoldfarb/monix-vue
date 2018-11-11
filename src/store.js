@@ -11,6 +11,8 @@ export default new Vuex.Store({
       MXN: 20.12,
       EUR: 0.88,
     },
+    leftRate: 'USD',
+    rightRate: 'CLP',
   },
   mutations: {
 
