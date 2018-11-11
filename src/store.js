@@ -22,6 +22,12 @@ export default new Vuex.Store({
     changeRightRate(state, newRate) {
       state.rightRate = newRate;
     },
+    swapRates(state) {
+      console.log(state.leftRate, state.rightRate);
+      const aux = state.leftRate;
+      state.leftRate = state.rightRate;
+      state.rightRate = aux;
+    },
   },
   actions: {
 

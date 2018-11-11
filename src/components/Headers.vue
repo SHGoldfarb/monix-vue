@@ -1,9 +1,9 @@
 <template>
   <div class="headersRow">
     <div class="leftHeader column">
-      <select v-model="leftRate">
+      <select v-bind:value="leftRate" v-on:change="onLeftRateChange">
         <option 
-          v-for="rate in rates.filter(rate => rate !== rightRate)" 
+          v-for="rate in rates" 
           v-bind:value="rate"
           v-bind:key="rate"
         >
@@ -11,10 +11,11 @@
         </option>
       </select>
     </div>
+    <div class="swapButton" v-on:click="swap">&lt;--&gt;</div>
     <div class="rightHeader column">
-      <select v-model="rightRate">
+      <select v-bind:value="rightRate" v-on:change="onRightRateChange">
         <option 
-          v-for="rate in rates.filter(rate => rate !== leftRate)" 
+          v-for="rate in rates" 
           v-bind:value="rate"
           v-bind:key="rate"
         >
@@ -28,12 +29,18 @@
 <script>
 export default {
   name: "Headers",
-  data() {
-    return {
-      leftRate: this.$store.state.leftRate,
-      rightRate: this.$store.state.rightRate,
-      rates: Object.keys(this.$store.state.rates)
-    };
+  computed: {
+    leftRate() {
+      console.log("computing left", this.$store.state.leftRate);
+      return this.$store.state.leftRate;
+    },
+    rightRate() {
+      console.log("computing right", this.$store.state.rightRate);
+      return this.$store.state.rightRate;
+    },
+    rates() {
+      return Object.keys(this.$store.state.rates);
+    }
   },
   components: {},
   watch: {
@@ -42,6 +49,17 @@ export default {
     },
     rightRate(newRate) {
       this.$store.commit("changeRightRate", newRate);
+    }
+  },
+  methods: {
+    swap() {
+      this.$store.commit("swapRates");
+    },
+    onLeftRateChange(event) {
+      this.$store.commit("changeLeftRate", event.target.value);
+    },
+    onRightRateChange(event) {
+      this.$store.commit("changeRightRate", event.target.value);
     }
   }
 };
