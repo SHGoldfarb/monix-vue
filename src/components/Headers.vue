@@ -6,6 +6,7 @@
           v-for="rate in rates" 
           v-bind:value="rate"
           v-bind:key="rate"
+          v-bind:disabled="rate === rightRate"
         >
           {{rate}}
         </option>
@@ -18,6 +19,7 @@
           v-for="rate in rates" 
           v-bind:value="rate"
           v-bind:key="rate"
+          v-bind:disabled="rate === leftRate"
         >
           {{rate}}
         </option>
@@ -31,15 +33,16 @@ export default {
   name: "Headers",
   computed: {
     leftRate() {
-      console.log("computing left", this.$store.state.leftRate);
       return this.$store.state.leftRate;
     },
     rightRate() {
-      console.log("computing right", this.$store.state.rightRate);
       return this.$store.state.rightRate;
     },
     rates() {
-      return Object.keys(this.$store.state.rates);
+      const ret = Object.keys(this.$store.state.rates).sort(
+        (a, b) => (a > b ? 1 : 0)
+      );
+      return ret;
     }
   },
   components: {},
@@ -67,13 +70,15 @@ export default {
 
 
 <style scoped>
+@import "../variables.css";
 .headersRow {
   display: flex;
   flex: 1;
 }
 .column {
-  flex: 1;
+  flex: 4;
   padding: 0px 5px;
+  margin: auto 0px;
 }
 
 .leftHeader {
@@ -82,5 +87,21 @@ export default {
 
 .rightHeader {
   text-align: left;
+}
+
+select {
+  border: 0px;
+  background-color: transparent;
+  font: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-left: 0px;
+  color: var(--main-font-color);
+}
+
+.swapButton {
+  cursor: pointer;
+  flex: 1;
+  margin: auto 0px;
 }
 </style>

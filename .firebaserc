@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "production": "monix-vue",
+    "default": "monix-vue"
+  }
+}

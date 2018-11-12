@@ -11,7 +11,7 @@ export default new Vuex.Store({
       MXN: 20.12,
       EUR: 0.88,
     },
-    leftRate: 'CLP',
+    leftRate: 'MXN',
     rightRate: 'USD',
     currentMultiplier: 10,
   },
@@ -23,10 +23,20 @@ export default new Vuex.Store({
       state.rightRate = newRate;
     },
     swapRates(state) {
-      console.log(state.leftRate, state.rightRate);
       const aux = state.leftRate;
       state.leftRate = state.rightRate;
       state.rightRate = aux;
+    },
+    incrementMultiplier(state) {
+      state.currentMultiplier *= 10;
+    },
+    decrementMultiplier(state) {
+      state.currentMultiplier /= 10;
+    },
+    setRates(state, rates) {
+      state.rates = rates;
+      state.leftRate = 'MXN';
+      state.rightRate = 'USD';
     },
   },
   actions: {

@@ -1,0 +1,14 @@
+:root {
+
+    --color-1: rgba(38, 70, 83, 1);
+    --color-2: rgba(42, 157, 143, 1);
+    --color-3: rgba(233, 196, 106, 1);
+    --color-4: rgba(244, 162, 97, 1);
+    --color-5: rgba(231, 111, 81, 1);
+
+    --main-bg-color: var(--color-1);
+    --sec-bg-color: var(--color-3);
+    --main-font-color: var(--color-3);
+    --sec-font-color: var(--color-1);
+    --main-border-color: var(--color-1);
+}
