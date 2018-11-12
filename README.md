@@ -1,5 +1,7 @@
 # monix-vue
 
+Project currently (November 2018) deployed [here](https://monix-vue.firebaseapp.com)
+
 ## Project setup
 ```
 yarn install
